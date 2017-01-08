@@ -42,12 +42,20 @@ SECTIONS
         __bss_end__ = .;
     } >ram 
 
-    __exidx_start = . ;
+    .init.array :
+    {
+        __init_array_start = .;
+        *(.init_array)
+        *(.init_array.*)
+        __init_array_end = .;
+    } > ram
+
     .ARM.exidx :
     {
+        __exidx_start = . ;
         *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+        __exidx_end = .;
     } >ram
-    __exidx_end = .;
 
     .heap :
     {

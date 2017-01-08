@@ -1,0 +1,12 @@
+* Bare metal cpp for stm32f100
+** Debug in simulation
+   1) Exectue qemu:
+      ~qemu-system-arm  -M lm3s6965evb -cpu cortex-m3 -S -gdb tcp::1234  -kernel section~
+   2) Exectue gdb:
+      ~arm-none-eabi-gdb image.bin~
+   3) Set target to remote:
+      ~target remote localhost:1234~
+   4) Load binary:
+      ~load~
+   5) Debug
+

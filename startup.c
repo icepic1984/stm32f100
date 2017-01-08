@@ -1,10 +1,16 @@
 #include <stdint.h>
 
+extern int main(void);
+
+extern "C" {
+    void __libc_init_array(void);
+    void _init(void);
+}
+
 void low_level_init(void);
 void nmi_handler(void);
 void hardfault_handler(void);
 
-extern int main(void);
 extern unsigned int _stack_top;
 
 // Define the vector table
@@ -55,8 +61,13 @@ void low_level_init(void)
         datai_start++;
     }
 
+    __libc_init_array();
 
     main();
+}
+extern "C"{
+void _init()
+{};
 }
 
 
