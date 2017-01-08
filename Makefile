@@ -16,9 +16,9 @@ clean:
 image.bin: main.o startup.o
 	$(LD) $(LDFLAGS) -o image.bin startup.o main.o -lm
 
-main.o : 
+main.o : main.cpp
 	$(CC) $(CFLAGS) main.cpp
 
-startup.o:
+startup.o: startup.c
 	$(CC) $(CFLAGS) startup.c
 
