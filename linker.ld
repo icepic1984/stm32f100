@@ -26,6 +26,7 @@ SECTIONS
     {
         _data_start = .;
         *(.data)      /* Data memory */
+        *(.data.*)
         _data_end = .;
     } >ram AT >rom 
 
@@ -57,10 +58,9 @@ SECTIONS
         __exidx_end = .;
     } >ram
 
-    .heap :
-    {
-        _HEAP = .;
-    } >ram
+     . = ALIGN(8);
+    _heap_start = .;
+    _heap_end = . + 0x1000;
 
     .stack :
     {
@@ -68,3 +68,6 @@ SECTIONS
     } >stack
 
 }  
+
+
+
