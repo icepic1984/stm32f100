@@ -1,38 +1,11 @@
 #include <stdint.h>
-#include <stdlib.h>
-
-
-unsigned int my_global_variable_zero = 0;
-unsigned int my_global_variable_one = 1;
-unsigned int my_global_variable_two = 2;
-
-struct test {
-    test()
-        : t(0)
-    {
-    }
-    test(int a)
-        : t(a)
-    {
-    }
-
-    int t;
-};
-
-test glob(100);
-
+#include "stm32xx.hpp"
 
 int main(void)
 {
-    int* bla = (int*) malloc(sizeof(int) * 10);
 
-    for(int i = 0; i < 10; ++i)
-        bla[i] = i;
-    free(bla);
+    constexpr stm32xx::address stack = stm32xx::address(0x2000);
 
-    bla = (int*) malloc(sizeof(int) * 10);
-    
-    
     int i = 0;
 
     {
@@ -46,6 +19,8 @@ int main(void)
         my_global_variable_zero++;
         my_global_variable_one++;
         my_global_variable_two++;
+        my_global_variable_one = stack.value();
+
     }
 }
 

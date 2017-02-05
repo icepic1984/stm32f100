@@ -3,7 +3,7 @@ LD = arm-none-eabi-g++
 CP = arm-none-eabi-objcopy
 OD = arm-none-eabi-objdump
 
-CFLAGS = -c -g -mcpu=cortex-m3 -mthumb -fno-unwind-tables -fno-exceptions
+CFLAGS = -c -g -mcpu=cortex-m3 -mthumb -fno-unwind-tables -fno-exceptions -fno-rtti -std=c++14
 LDFLAGS = -Tlinker.ld -nostartfiles  -L/usr/arm-none-eabi/lib/thumb
 CPFLAGS = -Obinary
 ODFLAGS = -S
